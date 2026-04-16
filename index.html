@@ -144,7 +144,7 @@
     }
 
     .travel-screen {
-      grid-template-rows: 250px auto 160px 132px;
+      grid-template-rows: 330px auto 160px 132px;
     }
 
     .scene-panel,
@@ -167,7 +167,9 @@
 
     .scene-panel {
       display: grid;
-      align-items: center;
+      grid-template-rows: 1fr auto;
+      align-content: start;
+      gap: 12px;
       background:
         radial-gradient(circle at top center, rgba(255, 176, 0, 0.1), transparent 42%),
         linear-gradient(180deg, rgba(13, 17, 14, 0.8), rgba(8, 10, 9, 0.96));
@@ -177,7 +179,16 @@
     .scene-panel__art {
       display: grid;
       justify-items: center;
+      align-items: center;
       gap: 12px;
+      min-height: 0;
+    }
+
+    .scene-panel__footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: end;
     }
 
     .scene-panel pre,
@@ -192,9 +203,6 @@
     }
 
     .scene-caption {
-      position: absolute;
-      right: 18px;
-      bottom: 14px;
       color: var(--accent);
       font-size: 1.4rem;
       letter-spacing: 0.08em;
@@ -202,13 +210,12 @@
       background: rgba(0, 0, 0, 0.35);
       padding: 4px 8px;
       border: 1px solid rgba(255, 176, 0, 0.22);
+      justify-self: end;
+      text-align: right;
+      max-width: 300px;
     }
 
     .scene-hud {
-      position: absolute;
-      left: 18px;
-      right: 220px;
-      bottom: 14px;
       display: grid;
       gap: 8px;
       padding: 10px 12px;
@@ -1103,7 +1110,7 @@
 
       .viewport,
       .travel-screen {
-        grid-template-rows: 210px auto 200px 146px;
+        grid-template-rows: 300px auto 200px 146px;
       }
 
       .status-grid {
@@ -1138,14 +1145,13 @@
       }
 
       .scene-caption {
-        position: static;
-        justify-self: start;
+        justify-self: stretch;
+        max-width: none;
+        text-align: left;
       }
 
-      .scene-hud {
-        position: static;
-        margin-top: 10px;
-        right: auto;
+      .scene-panel__footer {
+        grid-template-columns: 1fr;
       }
 
       .scene-hud__meta,
@@ -1187,23 +1193,25 @@
                    /_/   .-====-.   \_\
                         /_/    \_\</pre>
           </div>
-          <div class="scene-hud">
-            <div class="scene-hud__meta">
-              <span id="scene-region">Valles Marineris Sector</span>
-              <span id="scene-telemetry">Wind Index: Moderate</span>
-            </div>
-            <div class="journey-strip">
-              <div class="journey-strip__labels">
-                <span id="journey-progress-label">0 / 3,200 km logged</span>
-                <span id="status-next-outpost">Next outpost: Olympus Station</span>
+          <div class="scene-panel__footer">
+            <div class="scene-hud">
+              <div class="scene-hud__meta">
+                <span id="scene-region">Valles Marineris Sector</span>
+                <span id="scene-telemetry">Wind Index: Moderate</span>
               </div>
-              <div class="journey-strip__track">
-                <span class="journey-strip__fill" id="journey-progress-fill"></span>
-                <div class="journey-strip__markers" id="journey-progress-markers"></div>
+              <div class="journey-strip">
+                <div class="journey-strip__labels">
+                  <span id="journey-progress-label">0 / 3,200 km logged</span>
+                  <span id="status-next-outpost">Next outpost: Olympus Station</span>
+                </div>
+                <div class="journey-strip__track">
+                  <span class="journey-strip__fill" id="journey-progress-fill"></span>
+                  <div class="journey-strip__markers" id="journey-progress-markers"></div>
+                </div>
               </div>
             </div>
+            <div class="scene-caption" id="scene-caption">Valles Marineris / Wind Index: Moderate</div>
           </div>
-          <div class="scene-caption" id="scene-caption">Valles Marineris / Wind Index: Moderate</div>
         </section>
 
         <section class="status-grid">
